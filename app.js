@@ -42,18 +42,6 @@ const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
             ? RESULT_PLAYER_WINS
             : RESULT_COMPUTER_WINS;
 
-// if (cChoice === pChoice) {
-//     return RESULT_DRAW;
-// } else if (
-//     (cChoice === ROCK && pChoice === PAPER) ||
-//     (cChoice === PAPER && pChoice === SCISSORS) ||
-//     (cChoice === SCISSORS && pChoice === ROCK)
-// ) {
-//     return RESULT_PLAYER_WINS;
-// } else {
-//     return RESULT_COMPUTER_WINS;
-// }
-
 startGameBtn.addEventListener("click", () => {
     if (gameIsRunning) {
         return;
@@ -66,10 +54,11 @@ startGameBtn.addEventListener("click", () => {
     if (playerChoice) {
         winner = getWinner(computerChoice, playerChoice);
     } else {
-        winner = getWinner(computerChoice, playerChoice);
+        winner = getWinner(computerChoice);
     }
     console.log(winner);
-    let message = `You picked ${playerChoice || DEFAULT_USER_CHOICE}, computer picked ${computerChoice}, therefore`;
+    let message = `You picked ${playerChoice || DEFAULT_USER_CHOICE
+        }, computer picked ${computerChoice}, therefore`;
     if (winner === RESULT_DRAW) {
         message = message + "you have a draw.";
     } else if (winner === RESULT_PLAYER_WINS) {
